@@ -1,10 +1,10 @@
 import './App.css';
-import StyledTreeExample from './components/orgSctructTree/orgSctructTree'
+import OrgStructTree from "./components/orgSctructTree";
 
 function App() {
   return (
     <div className="App">
-      <StyledTreeExample/>
+      <OrgStructTree/>
     </div>
   );
 }

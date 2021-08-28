@@ -1,0 +1,16 @@
+.orgNode {
+    padding: 10px;
+    border-radius: 4px;
+    display: inline-block;
+    border: 1px solid #F0F0F0;
+    background: white;
+    width: 200px;
+}
+
+.orgNode h2, p {
+    margin: 0;
+}
+
+.orgNode p {
+    text-align: left;
+}
