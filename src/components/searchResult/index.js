@@ -2,7 +2,7 @@ import styles from './index.module.css'
 import CardEmployee from "../sideBar/cardEmployee";
 import CardTicket from "../sideBar/cardTicket";
 import React from "react";
-import { OrgNode } from "../orgSctructTree";
+import OrgNode from "../orgSctructTree/orgNode";
 
 const SearchResult = ({
 
