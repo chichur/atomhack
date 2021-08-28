@@ -17,12 +17,14 @@ const SideBar = ({
                     <CardEmployee
                         firstName="Иван"
                         lastName="Иванов"
+                        staff="Разработчик"
                         efficiency={25}
                         workload={56}
                     />
                     <CardEmployee
                         firstName="Вася"
                         lastName="Пупкин"
+                        staff="Слесарь"
                         efficiency={80}
                         workload={20}
                     />
@@ -34,6 +36,7 @@ const SideBar = ({
                             <p>Загруженность</p>
                             <Progress
                                 type="circle"
+                                status="active"
                                 strokeColor={progressColor(workload)}
                                 percent={workload}
                             />
@@ -42,6 +45,7 @@ const SideBar = ({
                             <p>Эффективность</p>
                             <Progress
                                 type="circle"
+                                status="active"
                                 strokeColor={progressColor(efficiency)}
                                 percent={efficiency}
                             />
@@ -57,7 +61,37 @@ const SideBar = ({
                         <CardTicket
                             ticketName="Задача №2"
                             priority={1}
-                            progress={53}
+                            progress={100}
+                            deadLine="29.08.21 16:00"
+                        />
+                        <CardTicket
+                            ticketName="Задача №3"
+                            priority={2}
+                            progress={99}
+                            deadLine="29.08.21 16:00"
+                        />
+                        <CardTicket
+                            ticketName="Задача №3"
+                            priority={2}
+                            progress={99}
+                            deadLine="29.08.21 16:00"
+                        />
+                        <CardTicket
+                            ticketName="Задача №3"
+                            priority={2}
+                            progress={99}
+                            deadLine="29.08.21 16:00"
+                        />
+                        <CardTicket
+                            ticketName="Задача №3"
+                            priority={2}
+                            progress={99}
+                            deadLine="29.08.21 16:00"
+                        />
+                        <CardTicket
+                            ticketName="Задача №3"
+                            priority={2}
+                            progress={99}
                             deadLine="29.08.21 16:00"
                         />
                         <CardTicket

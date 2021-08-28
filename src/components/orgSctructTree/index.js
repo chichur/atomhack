@@ -4,7 +4,8 @@ import { Tree, TreeNode } from 'react-organizational-chart';
 import { Progress } from "antd";
 import { progressColor } from "../../utils";
 
-const OrgNode = ({children, employees, workload
+const OrgNode = ({
+    onDepartamentClick, children, employees, workload
 }) => {
     return (
         <div className={styles.orgNode}>
@@ -21,24 +22,27 @@ const OrgNode = ({children, employees, workload
 
 const OrgStructTree = () => {
     return (
-        <Tree
-            lineWidth={'2px'}
-            lineColor={'#989898'}
-            lineBorderRadius={'10px'}
-            label={<OrgNode employees={16} workload={50}>Организация</OrgNode>}>
-            <TreeNode label={<OrgNode employees={16} workload={50}>Организация</OrgNode>}>
-                <TreeNode label={<OrgNode employees={16} workload={50}>Организация</OrgNode>} />
-                <TreeNode label={<OrgNode employees={16} workload={50}>Организация</OrgNode>} />
-            </TreeNode>
-            <TreeNode label={<OrgNode employees={16} workload={50}>Организация</OrgNode>}>
-                <TreeNode label={<OrgNode employees={16} workload={50}>Организация</OrgNode>} />
-                <TreeNode label={<OrgNode employees={16} workload={50}>Организация</OrgNode>} />
-            </TreeNode>
-            <TreeNode label={<OrgNode employees={16} workload={50}>Организация</OrgNode>}>
-                <TreeNode label={<OrgNode employees={16} workload={50}>Организация</OrgNode>} />
-                <TreeNode label={<OrgNode employees={16} workload={50}>Организация</OrgNode>} />
-            </TreeNode>
-        </Tree>
+        <div className={styles.tree}>
+            <h1>Дерево</h1>
+            <Tree
+                lineWidth={'2px'}
+                lineColor={'#989898'}
+                lineBorderRadius={'10px'}
+                label={<OrgNode employees={16} workload={50}>Организация</OrgNode>}>
+                <TreeNode label={<OrgNode employees={16} workload={50}>Организация</OrgNode>}>
+                    <TreeNode label={<OrgNode employees={16} workload={50}>Организация</OrgNode>} />
+                    <TreeNode label={<OrgNode employees={16} workload={50}>Организация</OrgNode>} />
+                </TreeNode>
+                <TreeNode label={<OrgNode employees={16} workload={50}>Организация</OrgNode>}>
+                    <TreeNode label={<OrgNode employees={16} workload={50}>Организация</OrgNode>} />
+                    <TreeNode label={<OrgNode employees={16} workload={50}>Организация</OrgNode>} />
+                </TreeNode>
+                <TreeNode label={<OrgNode employees={16} workload={50}>Организация</OrgNode>}>
+                    <TreeNode label={<OrgNode employees={16} workload={50}>Организация</OrgNode>} />
+                    <TreeNode label={<OrgNode employees={16} workload={50}>Организация</OrgNode>} />
+                </TreeNode>
+            </Tree>
+        </div>
     );
 }
 
