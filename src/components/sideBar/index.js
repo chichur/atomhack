@@ -2,16 +2,31 @@ import styles from './index.module.css'
 import CardEmployee from "./cardEmployee";
 import CardTicket from "./cardTicket";
 import { Progress, Tabs } from 'antd';
-import {progressColor} from "../../utils";
+import { progressColor } from "../../utils";
+import { CloseOutlined } from "@ant-design/icons";
+import {useState} from "react";
 const { TabPane } = Tabs;
 
 
 const SideBar = ({
     departamentName, workload, efficiency
 }) => {
+    const [departamentShow, setDepartamentShow] = useState(true);
+
+    const closeDepartamentWindow = () => {
+        setDepartamentShow(false)
+    }
+
+    let display = 'initial';
+
+    if (departamentShow === false) {
+        display = 'none'
+    }
+
     return (
-        <div className={styles.sideBar}>
+        <div className={styles.sideBar} style={{display: display}}>
             <h2>{departamentName}</h2>
+            <CloseOutlined onClick={closeDepartamentWindow} />
             <Tabs centered={true}>
                 <TabPane tab="Сотрудники" key="1">
                     <CardEmployee

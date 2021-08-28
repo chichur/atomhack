@@ -1,0 +1,12 @@
+.searchResult {
+    text-align: left;
+    padding: 20px;
+}
+
+.result {
+    display: flex;
+}
+
+.result > div {
+    margin-right: 100px;
+}
