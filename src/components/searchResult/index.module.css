@@ -10,3 +10,12 @@
 .result > div {
     margin-right: 100px;
 }
+
+.departaments {
+    display: flex;
+    flex-direction: column;
+}
+
+.departaments > *{
+    margin-bottom: 10px;
+}

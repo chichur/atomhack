@@ -1,6 +1,8 @@
 import styles from './index.module.css'
 import CardEmployee from "../sideBar/cardEmployee";
 import CardTicket from "../sideBar/cardTicket";
+import React from "react";
+import { OrgNode } from "../orgSctructTree";
 
 const SearchResult = ({
 
@@ -53,6 +55,12 @@ const SearchResult = ({
                         progress={99}
                         deadLine="29.08.21 16:00"
                     />
+                </div>
+                <div className={styles.departaments}>
+                    <h2>Департаменты:</h2>
+                    <OrgNode employees={16} workload={84}>Департамент</OrgNode>
+                    <OrgNode employees={35} workload={60}>Департамент</OrgNode>
+                    <OrgNode employees={142} workload={20}>Департамент</OrgNode>
                 </div>
             </div>
         </div>

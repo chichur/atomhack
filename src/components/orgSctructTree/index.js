@@ -46,4 +46,4 @@ const OrgStructTree = () => {
     );
 }
 
-export default OrgStructTree;
+export {OrgStructTree, OrgNode};

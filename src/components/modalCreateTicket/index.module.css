@@ -1,0 +1,41 @@
+.modalCreateTicket {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    margin-top: -245px;
+    margin-left: -215px;
+    width: 430px;
+    height: 490px;
+    padding: 20px;
+    background-color: white;
+    text-align: left;
+    border: 1px solid #F0F0F0;
+    -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+}
+
+.modalCreateTicket [aria-label="close"] {
+    position: absolute;
+    right: 18px;
+    top: 18px;
+}
+
+.modalCreateTicket > * {
+    margin-bottom: 10px;
+}
+
+.modalCreateTicket button {
+    margin-right: 10px;
+}
+
+.fadeWrapper {
+    z-index: 1;
+    position: absolute;
+    top:0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}

@@ -1,6 +1,6 @@
 import styles from './index.module.css'
 import Search from "antd/es/input/Search";
-import {Button} from "antd";
+import { Button } from "antd";
 
 
 const SearchHeader = ({
