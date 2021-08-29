@@ -40,7 +40,7 @@ function OrgStructTree(props) {
     }
 
     useEffect(() => {
-        // loadData();
+        loadData();
     }, []);
 
     function rec(cur) {
