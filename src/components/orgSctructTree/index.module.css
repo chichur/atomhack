@@ -1,4 +1,6 @@
 .tree {
+    overflow-x: scroll;
+    height: 90vh;
     padding-top: 20px;
 }
 

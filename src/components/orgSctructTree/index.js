@@ -4,11 +4,31 @@ import OrgNode from './orgNode';
 import { Tree, TreeNode } from 'react-organizational-chart';
 
 function OrgStructTree(props) {
-    const [departments, setDepartments] = useState([]);
+    //моковые данные
+    const test_depart = [
+        {name: 'Организация', id: 0, parent: null},
+        {name: 'Отдел1', id: 1, parent: 0},
+        {name: 'Отдел2', id: 2, parent: 0},
+        {name: 'Отдел3', id: 3, parent: 0},
+        {name: 'Подотдел1', id: 4, parent: 1},
+        {name: 'Подотдел2', id: 5, parent: 1},
+        {name: 'Подотдел3', id: 6, parent: 1},
+        {name: 'Подотдел1', id: 7, parent: 2},
+        {name: 'Подотдел2', id: 8, parent: 2},
+        {name: 'Подотдел3', id: 9, parent: 2},
+        {name: 'Подотдел1', id: 10, parent: 3},
+        {name: 'Подотдел2', id: 11, parent: 3},
+        {name: 'Подотдел3', id: 12, parent: 3},
+        {name: 'Подотдел4', id: 13, parent: 3},
+        {name: 'Подотдел6', id: 14, parent: 3},
+        {name: 'Подотдел7', id: 16, parent: 3},
+    ]
+
+    const [departments, setDepartments] = useState(test_depart);
 
     async function loadData() {
         try {
-            const response = await fetch('http://localhost:8000/api/department');
+            const response = await fetch('http://localhost:8000/api/department/');
             if (!response.ok)
                 throw new Error(response.statusText);
             const json = await response.json();
@@ -20,30 +40,44 @@ function OrgStructTree(props) {
     }
 
     useEffect(() => {
-        loadData();
+        // loadData();
     }, []);
 
-    console.log(departments);
+    function rec(cur) {
+        let children = [];
+        for (let child of departments) {
+            if (child.parent == cur.id) children.push(child);
+        }
+        cur["children"] = children;
+        for (let child of children) rec(child);
+    }
+
+    let tree = departments[0];
+    rec(tree);
+
+    const renderNode = (node) => {
+        if (node) {
+            return(
+                <TreeNode label={<OrgNode id={node.id} employees={16} workload={50}>{node.name}</OrgNode>}>
+                    {node.children.map(value => renderNode(value))}
+                </TreeNode>
+            );
+        }
+        else return null;
+    }
+
+    let treeView = tree.children.map(value => renderNode(value))
+
+    let root = departments.find(el => el.parent === null)
 
     return (
-      <div className={styles.tree}>
+      <div className={styles.tree} draggable="true">
           <Tree
             lineWidth={'2px'}
             lineColor={'#989898'}
             lineBorderRadius={'10px'}
-            label={<OrgNode employees={16} workload={50}>Организация</OrgNode>}>
-              <TreeNode label={<OrgNode employees={16} workload={50}>Организация</OrgNode>}>
-                  <TreeNode label={<OrgNode employees={16} workload={50}>Организация</OrgNode>}/>
-                  <TreeNode label={<OrgNode employees={16} workload={50}>Организация</OrgNode>}/>
-              </TreeNode>
-              <TreeNode label={<OrgNode employees={16} workload={50}>Организация</OrgNode>}>
-                  <TreeNode label={<OrgNode employees={16} workload={50}>Организация</OrgNode>}/>
-                  <TreeNode label={<OrgNode employees={16} workload={50}>Организация</OrgNode>}/>
-              </TreeNode>
-              <TreeNode label={<OrgNode employees={16} workload={50}>Организация</OrgNode>}>
-                  <TreeNode label={<OrgNode employees={16} workload={50}>Организация</OrgNode>}/>
-                  <TreeNode label={<OrgNode employees={16} workload={50}>Организация</OrgNode>}/>
-              </TreeNode>
+            label={<OrgNode id={root.id} employees={16} workload={54}>{root.name}</OrgNode>}>
+              {treeView}
           </Tree>
       </div>
     );
