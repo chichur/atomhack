@@ -1,14 +1,29 @@
-import React, {useEffect} from 'react';
-import { connect } from "redux-zero/react";
-import actions from "../../redux/actions";
+import React, {useEffect, useState} from 'react';
 import styles from './index.module.css'
 import OrgNode from './orgNode';
 import { Tree, TreeNode } from 'react-organizational-chart';
 
 function OrgStructTree(props) {
+    const [departments, setDepartments] = useState([]);
+
+    async function loadData() {
+        try {
+            const response = await fetch('http://localhost:8000/api/department');
+            if (!response.ok)
+                throw new Error(response.statusText);
+            const json = await response.json();
+            console.log(json);
+            setDepartments(json);
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
     useEffect(() => {
-        props.loadData();
+        loadData();
     }, []);
+
+    console.log(departments);
 
     return (
       <div className={styles.tree}>
@@ -34,8 +49,4 @@ function OrgStructTree(props) {
     );
 }
 
-const mapStateToProps = ({departments}) => ({
-    departments
-});
-
-export default connect(mapStateToProps, actions)(OrgStructTree);
+export default OrgStructTree;
