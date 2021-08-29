@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import styles from './index.module.css'
 import OrgNode from './orgNode';
 import { Tree, TreeNode } from 'react-organizational-chart';
+import SideBar from "../sideBar";
 
 function OrgStructTree(props) {
     //моковые данные
@@ -24,7 +25,9 @@ function OrgStructTree(props) {
         {name: 'Подотдел7', id: 16, parent: 3},
     ]
 
+    const [departamentShow, setDepartamentShow] = useState(false);
     const [departments, setDepartments] = useState(test_depart);
+    const [currentDepartment, setCurrentDepartment] = useState(departments[0])
 
     async function loadData() {
         try {
@@ -32,7 +35,6 @@ function OrgStructTree(props) {
             if (!response.ok)
                 throw new Error(response.statusText);
             const json = await response.json();
-            console.log(json);
             setDepartments(json);
         } catch (e) {
             console.error(e);
@@ -42,6 +44,17 @@ function OrgStructTree(props) {
     useEffect(() => {
         loadData();
     }, []);
+
+    useEffect(() => {
+        setDepartamentShow(true);
+    }, [currentDepartment]);
+
+    const onDepartmentClick = (e) => {
+        let department = departments.find(el => el.id === Number(e.target.id));
+        console.log(department, e.target.id);
+        setCurrentDepartment(department);
+        setDepartamentShow(true);
+    }
 
     function rec(cur) {
         let children = [];
@@ -58,7 +71,12 @@ function OrgStructTree(props) {
     const renderNode = (node) => {
         if (node) {
             return(
-                <TreeNode label={<OrgNode id={node.id} employees={16} workload={50}>{node.name}</OrgNode>}>
+                <TreeNode label={<OrgNode
+                        onDepartamentClick={onDepartmentClick}
+                        id={node.id}
+                        employees={16}
+                        workload={50}>{node.name}
+                    </OrgNode>}>
                     {node.children.map(value => renderNode(value))}
                 </TreeNode>
             );
@@ -79,6 +97,12 @@ function OrgStructTree(props) {
             label={<OrgNode id={root.id} employees={16} workload={54}>{root.name}</OrgNode>}>
               {treeView}
           </Tree>
+          <SideBar
+              show={departamentShow}
+              departamentName={currentDepartment.name}
+              efficiency={70}
+              workload={10}
+          />
       </div>
     );
 }

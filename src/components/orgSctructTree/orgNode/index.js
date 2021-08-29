@@ -3,10 +3,10 @@ import {Progress} from "antd";
 import {progressColor} from "../../../utils";
 
 const OrgNode = ({
-    onDepartamentClick, children, employees, workload
+   id, onDepartamentClick, children, employees, workload
 }) => {
     return (
-        <div className={styles.orgNode}>
+        <div className={styles.orgNode} id={id} onClick={onDepartamentClick}>
                 <h2>{ children }</h2>
                 <p style={{'color': '#787878'}}>{employees !== undefined ? 'Сотрудники: ' + employees : ''}</p>
                 <Progress

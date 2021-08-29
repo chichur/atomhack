@@ -19,6 +19,10 @@
     width: 200px;
 }
 
+.orgNode > * {
+    pointer-events: none;
+}
+
 .orgNode h2, p {
     margin: 0;
 }
