@@ -6,7 +6,7 @@ const OrgNode = ({
    id, onDepartamentClick, children, employees, workload
 }) => {
     return (
-        <div className={styles.orgNode} id={id} onClick={onDepartamentClick}>
+        <div className={styles.orgNode} id={id} onClick={(e) => onDepartamentClick(id)}>
                 <h2>{ children }</h2>
                 <p style={{'color': '#787878'}}>{employees !== undefined ? 'Сотрудники: ' + employees : ''}</p>
                 <Progress

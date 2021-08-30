@@ -9,7 +9,7 @@ const { TabPane } = Tabs;
 
 
 const SideBar = ({
-    show, departamentName, workload, efficiency
+    show, departamentName, workload, efficiency, onClose,
 }) => {
 
     let display = show ? 'initial' : 'none';
@@ -17,7 +17,7 @@ const SideBar = ({
     return (
         <div className={styles.sideBar} style={{display: display}}>
             <h2>{departamentName}</h2>
-            <CloseOutlined />
+            <CloseOutlined onClick={onClose} />
             <Tabs centered={true}>
                 <TabPane tab="Сотрудники" key="1">
                     <CardEmployee
